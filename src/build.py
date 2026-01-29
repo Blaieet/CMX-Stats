@@ -193,6 +193,20 @@ def render_pages(df_players, df_weeks, stats):
         p['url'] = p['filename']
         urls.append(p['filename'])
         
+        # Check for image
+        # We check for png, jpg, jpeg
+        image_path = None
+        for ext in ['.png', '.jpg', '.jpeg', '.webp']:
+            potential_path = os.path.join(ASSETS_DIR, "players", f"{p_slug}{ext}")
+            if os.path.exists(potential_path):
+                # We need the path relative to the docs output
+                # But since we copy ASSETS_DIR to docs/ASSETS_DIR, key is just assets/players/...
+                p['image_path'] = f"assets/players/{p_slug}{ext}"
+                break
+        
+        if 'image_path' not in p:
+            p['image_path'] = None # or a default placeholder if desired
+        
     # Add 'url' column to df_players so we can access it in get_top_player
     # We assume df_players order matches players_data order (it should, as to_dicts preserves order)
     df_players = df_players.with_columns(pl.Series("url", urls))
@@ -256,6 +270,24 @@ def render_pages(df_players, df_weeks, stats):
             "label": "Major % Victòria",
             "url": top_wr_row['url']
         })
+
+    # 7. Max Yellow Cards Ratio (Grogues / Partit)
+    # We need to calculate this ratio safely
+    df_players = df_players.with_columns(
+        (pl.col("Grogues") / pl.col("Partits")).fill_nan(0).alias("Grogues_Ratio")
+    )
+    
+    top_yellow = get_top_player(df_players, "Grogues_Ratio", "Major % Grogues/Partit")
+    if top_yellow and float(top_yellow['value']) > 0:
+        # Reformat value to show 2 decimals
+        val = float(top_yellow['value'])
+        top_yellow['value'] = f"{val:.2f}"
+        leaderboard.append(top_yellow)
+        
+    # 8. Max Red Cards
+    top_red = get_top_player(df_players, "Vermelles", "Més Targetes Vermelles")
+    if top_red and int(top_red['value']) > 0: # Only show if > 0
+        leaderboard.append(top_red)
 
     pages = [
         ("index.html", {

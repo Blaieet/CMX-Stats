@@ -4,13 +4,25 @@
 {% block title %}{{ player['Jugador'] }} - La Masia Stats{% endblock %}
 
 {% block content %}
-<div class="row mb-5">
-    <div class="col-12">
+<div class="row mb-5 align-items-center">
+    <div class="col-md-9">
         <a href="players.html" class="text-decoration-none text-secondary mb-3 d-inline-block">
             <i class="bi bi-arrow-left"></i> Tornar a Jugadors
         </a>
         <h1 class="display-4 fw-bold">{{ player['Jugador'] }}</h1>
+        <p class="lead text-secondary">Estadístiques Detallades</p>
     </div>
+
+    {% if player['image_path'] %}
+    <div class="col-md-3">
+        <div class="position-relative" style="height: 300px; overflow: hidden; border-radius: 16px;">
+            <img src="{{ player['image_path'] }}" alt="{{ player['Jugador'] }}" class="img-fluid w-100 h-100"
+                style="object-fit: cover; object-position: top;">
+            <div class="position-absolute bottom-0 start-0 w-100"
+                style="height: 100px; background: linear-gradient(to top, rgba(15, 23, 42, 1), transparent);"></div>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 <!-- Main Stats Cards -->
