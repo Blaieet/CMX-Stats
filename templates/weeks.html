@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% set active_page = "weeks" %}
+
+{% block title %}Jornades - La Masia Stats{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-12">
+        <h1 class="fw-bold mb-4">Calendari i Resultats</h1>
+
+        <div class="glass-card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Jornada</th>
+                            <th>Rival</th>
+                            <th>Lloc</th>
+                            <th class="text-center">Resultat</th>
+                            <th class="text-center">Gols Local</th>
+                            <th class="text-center">Gols Visitant</th>
+                            <th>Porter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for week in weeks %}
+                        <tr>
+                            <td><span class="badge bg-secondary">J{{ week['Jornada'] }}</span></td>
+                            <td class="fw-semibold">{{ week['vs.'] }}</td>
+                            <td>{{ week['Posició'] }}</td>
+                            <td class="text-center">
+                                {% if week['Resultat'] == 'Victòria' %}
+                                <span class="badge badge-win">Victòria</span>
+                                {% elif week['Resultat'] == 'Derrota' %}
+                                <span class="badge badge-loss">Derrota</span>
+                                {% else %}
+                                <span class="badge badge-draw">Empat</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center fs-5">{{ week['Marcador Local'] }}</td>
+                            <td class="text-center fs-5">{{ week['Marcador Visitant'] }}</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">{{ week['Assistència'] }}</small>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

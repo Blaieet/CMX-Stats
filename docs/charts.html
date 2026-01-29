@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ca" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gràfics - La Masia Stats</title>
+    <link rel="icon" type="image/png" href="assets/crest.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/crest.png" alt="Crest" height="40" class="d-inline-block align-text-top">
+                <span>La Masia Stats</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">Resum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="players.html">Jugadors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="weeks.html">Jornades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                            href="charts.html">Gràfics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        
+<div class="row mb-5">
+    <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-3">Gràfics de l'Equip</h1>
+        <p class="lead text-secondary">Anàlisi visual de la temporada</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <!-- Points Chart -->
+    <div class="col-12">
+        <div class="glass-card p-4">
+            <h3 class="mb-4">Evolució de Punts (Acumulat)</h3>
+            <canvas id="pointsChart" style="max-height: 400px;"></canvas>
+        </div>
+    </div>
+
+    <!-- Goals Chart -->
+    <div class="col-12">
+        <div class="glass-card p-4">
+            <h3 class="mb-4">Gols Acumulats (Favor vs Contra)</h3>
+            <canvas id="goalsChart" style="max-height: 400px;"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js and Annotation Plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+<!-- Check if Espanyol exists in the list to determine where to put the line -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    const chartData = {"goals_against": [6, 14, 14, 16, 18, 27, 28, 31, 37, 43, 48, 49, 57], "goals_for": [4, 7, 9, 14, 18, 23, 29, 34, 37, 42, 43, 46, 55], "labels": ["Atl\u00e8tic Les Corts", "Vin\u00e7it", "Comtal", "Sant Gervasi", "Gl\u00f2ries", "Can Cui\u00e0s", "Mistral", "Maristes", "Gr\u00e0cia", "Horta", "Tremedal", "DMS", "Espanyol"], "points": [0, 0, 3, 6, 9, 9, 12, 15, 15, 15, 15, 18, 21], "results": ["Derrota", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria", "Vict\u00f2ria", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria", "Derrota", "Derrota", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria"]};
+    const espanyolIndex = -1;
+
+    // Setup generic options for dark theme
+    Chart.defaults.color = '#94a3b8';
+    Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
+
+    // --- Points Chart ---
+    const ctxPoints = document.getElementById('pointsChart').getContext('2d');
+
+    const annotations = {};
+    if (espanyolIndex !== -1) {
+        annotations.halfSeasonLine = {
+            type: 'line',
+            xMin: espanyolIndex + 0.5,
+            xMax: espanyolIndex + 0.5,
+            borderColor: '#facc15', // Yellow
+            borderWidth: 2,
+            borderDash: [6, 6],
+            label: {
+                display: true,
+                content: 'Final 1a Volta',
+                position: 'start',
+                backgroundColor: 'rgba(0,0,0,0.7)',
+                color: '#facc15'
+            }
+        };
+    }
+
+    // Map results to colors
+    const pointColors = chartData.results.map(result => {
+        if (result === 'Victòria') return '#22c55e'; // Green
+        if (result === 'Derrota') return '#ef4444'; // Red
+        return '#eab308'; // Yellow (Empat)
+    });
+
+    new Chart(ctxPoints, {
+        type: 'line',
+        data: {
+            labels: chartData.labels,
+            datasets: [{
+                label: 'Punts',
+                data: chartData.points,
+                borderColor: '#3b82f6', // Blue
+                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                borderWidth: 3,
+                tension: 0, // Straight lines
+                fill: true,
+                pointBackgroundColor: pointColors,
+                pointBorderColor: pointColors,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                annotation: {
+                    annotations: annotations
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: 3,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+
+    // --- Goals Chart ---
+    const ctxGoals = document.getElementById('goalsChart').getContext('2d');
+    new Chart(ctxGoals, {
+        type: 'line',
+        data: {
+            labels: chartData.labels,
+            datasets: [
+                {
+                    label: 'Gols a Favor',
+                    data: chartData.goals_for,
+                    backgroundColor: 'rgba(34, 197, 94, 0.2)', // Green
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                },
+                {
+                    label: 'Gols en Contra',
+                    data: chartData.goals_against,
+                    backgroundColor: 'rgba(239, 68, 68, 0.2)', // Red
+                    borderColor: 'rgba(239, 68, 68, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">Created by Blai Ras</p>
+            <small>Temporada 25/26</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

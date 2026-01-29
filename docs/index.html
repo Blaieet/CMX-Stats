@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ca" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resum - La Masia Stats</title>
+    <link rel="icon" type="image/png" href="assets/crest.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/crest.png" alt="Crest" height="40" class="d-inline-block align-text-top">
+                <span>La Masia Stats</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Resum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="players.html">Jugadors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="weeks.html">Jornades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="charts.html">Gràfics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        
+<div class="row mb-5">
+    <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-3">Resum de la Temporada</h1>
+        <p class="lead text-secondary">Estadístiques i resultats de l'equip</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Partits Jugats</div>
+            <div class="metric-value">13</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Victòries</div>
+            <div class="metric-value text-success">7</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Gols a Favor</div>
+            <div class="metric-value text-primary">55</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Gols en Contra</div>
+            <div class="metric-value text-danger">57</div>
+        </div>
+    </div>
+</div>
+
+<!-- Leaderboard Section -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="mb-4 fw-bold">Líders de la Temporada</h2>
+    </div>
+    
+    <div class="col-md-2 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">Màxim Golejador</div>
+            <div class="fw-bold text-info mb-1" style="font-size: 1.1rem;">
+                <a href="player_vives-ortiz-arnau.html" class="text-decoration-none text-info">VIVES ORTIZ, ARNAU</a>
+            </div>
+            <div class="display-6 fw-bold">14</div>
+        </div>
+    </div>
+    
+    <div class="col-md-2 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">Gols / Partit</div>
+            <div class="fw-bold text-info mb-1" style="font-size: 1.1rem;">
+                <a href="player_mitjavila-duran-guillem.html" class="text-decoration-none text-info">MITJAVILA DURAN, GUILLEM</a>
+            </div>
+            <div class="display-6 fw-bold">1.3</div>
+        </div>
+    </div>
+    
+    <div class="col-md-2 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">Màxim Assistent</div>
+            <div class="fw-bold text-info mb-1" style="font-size: 1.1rem;">
+                <a href="player_rodriguez-ares-marc.html" class="text-decoration-none text-info">RODRIGUEZ ARES, MARC</a>
+            </div>
+            <div class="display-6 fw-bold">9</div>
+        </div>
+    </div>
+    
+    <div class="col-md-2 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">Ass. / Partit</div>
+            <div class="fw-bold text-info mb-1" style="font-size: 1.1rem;">
+                <a href="player_rodriguez-ares-marc.html" class="text-decoration-none text-info">RODRIGUEZ ARES, MARC</a>
+            </div>
+            <div class="display-6 fw-bold">0.75</div>
+        </div>
+    </div>
+    
+    <div class="col-md-2 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">Millor Porter (Minuts imbatut)</div>
+            <div class="fw-bold text-info mb-1" style="font-size: 1.1rem;">
+                <a href="player_sanchez-laya-pau.html" class="text-decoration-none text-info">SANCHEZ LAYA, PAU</a>
+            </div>
+            <div class="display-6 fw-bold">13.75'</div>
+        </div>
+    </div>
+    
+    <div class="col-md-2 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">Major % Victòria</div>
+            <div class="fw-bold text-info mb-1" style="font-size: 1.1rem;">
+                <a href="player_gisbert-perez-oriol.html" class="text-decoration-none text-info">GISBERT PEREZ, ORIOL</a>
+            </div>
+            <div class="display-6 fw-bold">67.0%</div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="glass-card p-4">
+            <h3 class="mb-4">Últims Resultats</h3>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Jornada</th>
+                            <th>Rival</th>
+                            <th class="text-center">Resultat</th>
+                            <th class="text-center">Marcador</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>13</td>
+                            <td>Espanyol</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win rounded-pill px-3">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center font-monospace fw-bold">
+                                8 - 9
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>12</td>
+                            <td>DMS</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win rounded-pill px-3">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center font-monospace fw-bold">
+                                3 - 1
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>11</td>
+                            <td>Tremedal</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss rounded-pill px-3">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center font-monospace fw-bold">
+                                5 - 1
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>10</td>
+                            <td>Horta</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss rounded-pill px-3">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center font-monospace fw-bold">
+                                5 - 6
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>9</td>
+                            <td>Gràcia</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss rounded-pill px-3">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center font-monospace fw-bold">
+                                3 - 6
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-3">
+                <a href="weeks.html" class="btn btn-outline-light btn-sm">Veure tots els partits</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">Created by Blai Ras</p>
+            <small>Temporada 25/26</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

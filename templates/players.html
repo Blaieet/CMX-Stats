@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% set active_page = "players" %}
+
+{% block title %}Jugadors - La Masia Stats{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold mb-0">Estadístiques de Jugadors</h1>
+            <button class="btn btn-outline-light" id="toggleStatsBtn" onclick="toggleStats()">
+                <i class="bi bi-plus-circle"></i> Veure tot
+            </button>
+        </div>
+
+        <div class="glass-card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Jugador</th>
+                            <th class="text-center">Partits</th>
+                            <th class="text-center">Gols</th>
+                            <th class="text-center">Assistències</th>
+                            <th class="text-center">Gols/Partit</th>
+
+                            <!-- Extended Stats Headers -->
+                            <th class="text-center extended-stats d-none">Expulsions</th>
+                            <th class="text-center extended-stats d-none">Grogues</th>
+                            <th class="text-center extended-stats d-none">Vermelles</th>
+                            <th class="text-center extended-stats d-none">Partits/Gol</th>
+                            <th class="text-center extended-stats d-none">Ass./Partit</th>
+
+                            <th class="text-center">Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for player in players %}
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="{{ player['url'] }}" class="text-decoration-none text-info">{{
+                                    player['Jugador'] }}</a>
+                            </td>
+                            <td class="text-center">{{ player['Partits'] }}</td>
+                            <td class="text-center fw-bold text-primary">{{ player['Gols'] }}</td>
+                            <td class="text-center">{{ player['Assistències'] }}</td>
+                            <td class="text-center">{{ player['Gols x partit'] }}</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none {% if player['Expulsions'] > 0 %}text-danger fw-bold{% endif %}">
+                                {{ player['Expulsions'] }}</td>
+                            <td
+                                class="text-center extended-stats d-none {% if player['Grogues'] > 0 %}text-warning fw-bold{% endif %}">
+                                {{ player['Grogues'] }}</td>
+                            <td
+                                class="text-center extended-stats d-none {% if player['Vermelles'] > 0 %}text-danger fw-bold{% endif %}">
+                                {{ player['Vermelles'] }}</td>
+                            <td class="text-center extended-stats d-none">{{ player['Partits per gol'] }}</td>
+                            <td class="text-center extended-stats d-none">{{ player['Assitències x partit'] }}</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: {{ player['Win Rate']|float * 100 }}%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">{{ (player['Win Rate']|float *
+                                    100)|round(0) }}%</small>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h2 class="fw-bold mb-4 mt-5">Estadístiques de Porters</h2>
+        <div class="glass-card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Porter</th>
+                            <th class="text-center">Minuts</th>
+                            <th class="text-center">Gols en Contra</th>
+                            <th class="text-center">Gols per partit</th>
+                            <th class="text-center">Gols per minut</th>
+                            <th class="text-center">Minuts sense Gol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for keeper in goalkeepers %}
+                        <tr>
+                            <td class="fw-semibold">{{ keeper['Jugador'] }}</td>
+                            <td class="text-center">{{ keeper['Minuts'] }}</td>
+                            <td class="text-center fw-bold text-danger">{{ keeper['Gols en contra'] }}</td>
+                            <td class="text-center">{{ keeper['Gols x partit en contra'] }}</td>
+                            <td class="text-center">{{ keeper['Gols x minut en contra'] }}</td>
+                            <td class="text-center text-success">{{ keeper['Minuts sense gols (porter)'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleStats() {
+        const hiddenElements = document.querySelectorAll('.extended-stats');
+        const btn = document.getElementById('toggleStatsBtn');
+
+        hiddenElements.forEach(el => {
+            el.classList.toggle('d-none');
+        });
+
+        // Toggle button text and potentially icon
+        if (btn.innerText.includes('Veure tot')) {
+            btn.innerHTML = '<i class="bi bi-dash-circle"></i> Veure menys';
+            btn.classList.add('active');
+        } else {
+            btn.innerHTML = '<i class="bi bi-plus-circle"></i> Veure tot';
+            btn.classList.remove('active');
+        }
+    }
+</script>
+{% endblock %}

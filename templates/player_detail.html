@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% set active_page = "players" %}
+
+{% block title %}{{ player['Jugador'] }} - La Masia Stats{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-12">
+        <a href="players.html" class="text-decoration-none text-secondary mb-3 d-inline-block">
+            <i class="bi bi-arrow-left"></i> Tornar a Jugadors
+        </a>
+        <h1 class="display-4 fw-bold">{{ player['Jugador'] }}</h1>
+    </div>
+</div>
+
+<!-- Main Stats Cards -->
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center h-100">
+            <div class="metric-label">Partits</div>
+            <div class="metric-value">{{ player['Partits'] }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center h-100">
+            <div class="metric-label">Gols</div>
+            <div class="metric-value text-primary">{{ player['Gols'] }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center h-100">
+            <div class="metric-label">Assistències</div>
+            <div class="metric-value text-info">{{ player['Assistències'] }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center h-100">
+            <div class="metric-label">Gols / Partit</div>
+            <div class="metric-value">{{ player['Gols x partit'] }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <!-- Goal Types Breakdown -->
+    <div class="col-md-6">
+        <div class="glass-card p-4 h-100">
+            <h3 class="mb-4">Tipus de Gols</h3>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <tbody>
+                        <tr>
+                            <td>Normal</td>
+                            <td class="text-end fw-bold">{{ player['Normal'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Segon Pal</td>
+                            <td class="text-end fw-bold">{{ player['Segon Pal'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Penalti</td>
+                            <td class="text-end fw-bold">{{ player['Penalti'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Doble Penalti</td>
+                            <td class="text-end fw-bold">{{ player['D. Penalti'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tir Lliure (Falta)</td>
+                            <td class="text-end fw-bold">{{ player['Tir Lliure (falta)'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Rates -->
+    <div class="col-md-6">
+        <div class="glass-card p-4 h-100">
+            <h3 class="mb-4">Rendiment (Rates)</h3>
+
+            <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Win Rate</span>
+                    <span class="text-success">{{ (player['Win Rate']|float * 100)|round(1) }}%</span>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar bg-success" role="progressbar"
+                        style="width: {{ player['Win Rate']|float * 100 }}%"></div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Draw Rate</span>
+                    <span class="text-warning">{{ (player['Draw Rate']|float * 100)|round(1) }}%</span>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar bg-warning" role="progressbar"
+                        style="width: {{ player['Draw Rate']|float * 100 }}%"></div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Loss Rate</span>
+                    <span class="text-danger">{{ (player['Loss Rate']|float * 100)|round(1) }}%</span>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar bg-danger" role="progressbar"
+                        style="width: {{ player['Loss Rate']|float * 100 }}%"></div>
+                </div>
+            </div>
+
+            <hr class="border-secondary my-4">
+
+            <div class="row text-center">
+                <div class="col-4 border-end border-secondary">
+                    <div class="small text-secondary">Partits/Gol</div>
+                    <div class="fw-bold">{{ player['Partits per gol'] }}</div>
+                </div>
+                <div class="col-4 border-end border-secondary">
+                    <div class="small text-secondary">Ass./Partit</div>
+                    <div class="fw-bold">{{ player['Assitències x partit'] }}</div>
+                </div>
+                <div class="col-4">
+                    <div class="small text-secondary">Targetes</div>
+                    <div class="fw-bold">
+                        <span class="text-warning" title="Grogues">{{ player['Grogues'] }}</span> /
+                        <span class="text-danger" title="Vermelles">{{ player['Vermelles'] }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

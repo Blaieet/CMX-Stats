@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ca" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadors - La Masia Stats</title>
+    <link rel="icon" type="image/png" href="assets/crest.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/crest.png" alt="Crest" height="40" class="d-inline-block align-text-top">
+                <span>La Masia Stats</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">Resum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                            href="players.html">Jugadors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="weeks.html">Jornades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="charts.html">Gràfics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold mb-0">Estadístiques de Jugadors</h1>
+            <button class="btn btn-outline-light" id="toggleStatsBtn" onclick="toggleStats()">
+                <i class="bi bi-plus-circle"></i> Veure tot
+            </button>
+        </div>
+
+        <div class="glass-card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Jugador</th>
+                            <th class="text-center">Partits</th>
+                            <th class="text-center">Gols</th>
+                            <th class="text-center">Assistències</th>
+                            <th class="text-center">Gols/Partit</th>
+
+                            <!-- Extended Stats Headers -->
+                            <th class="text-center extended-stats d-none">Expulsions</th>
+                            <th class="text-center extended-stats d-none">Grogues</th>
+                            <th class="text-center extended-stats d-none">Vermelles</th>
+                            <th class="text-center extended-stats d-none">Partits/Gol</th>
+                            <th class="text-center extended-stats d-none">Ass./Partit</th>
+
+                            <th class="text-center">Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_rodriguez-ares-marc.html" class="text-decoration-none text-info">RODRIGUEZ ARES, MARC</a>
+                            </td>
+                            <td class="text-center">12</td>
+                            <td class="text-center fw-bold text-primary">8</td>
+                            <td class="text-center">9</td>
+                            <td class="text-center">0.7</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                7</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">1.5</td>
+                            <td class="text-center extended-stats d-none">0.75</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 57.99999999999999%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">58.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_vidal-espuny-adrià.html" class="text-decoration-none text-info">VIDAL ESPUNY, ADRIÀ</a>
+                            </td>
+                            <td class="text-center">13</td>
+                            <td class="text-center fw-bold text-primary">1</td>
+                            <td class="text-center">4</td>
+                            <td class="text-center">0.1</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                3</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">13.0</td>
+                            <td class="text-center extended-stats d-none">0.3</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 54.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">54.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_mitjavila-duran-guillem.html" class="text-decoration-none text-info">MITJAVILA DURAN, GUILLEM</a>
+                            </td>
+                            <td class="text-center">7</td>
+                            <td class="text-center fw-bold text-primary">9</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">1.3</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none text-danger fw-bold">
+                                1</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                6</td>
+                            <td
+                                class="text-center extended-stats d-none text-danger fw-bold">
+                                1</td>
+                            <td class="text-center extended-stats d-none">0.8</td>
+                            <td class="text-center extended-stats d-none">0.3</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 56.99999999999999%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">57.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_vicens-gomez-pau.html" class="text-decoration-none text-info">VICENS GOMEZ, PAU</a>
+                            </td>
+                            <td class="text-center">2</td>
+                            <td class="text-center fw-bold text-primary">1</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0.5</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">2.0</td>
+                            <td class="text-center extended-stats d-none">0.0</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 50.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">50.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_sanchez-laya-oriol.html" class="text-decoration-none text-info">SANCHEZ LAYA, ORIOL</a>
+                            </td>
+                            <td class="text-center">8</td>
+                            <td class="text-center fw-bold text-primary">4</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">0.5</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                3</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">2.0</td>
+                            <td class="text-center extended-stats d-none">0.3</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 50.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">50.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_vives-ortiz-arnau.html" class="text-decoration-none text-info">VIVES ORTIZ, ARNAU</a>
+                            </td>
+                            <td class="text-center">13</td>
+                            <td class="text-center fw-bold text-primary">14</td>
+                            <td class="text-center">4</td>
+                            <td class="text-center">1.1</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                2</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">0.9</td>
+                            <td class="text-center extended-stats d-none">0.3</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 54.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">54.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_sanjose-merino-pol.html" class="text-decoration-none text-info">SANJOSE MERINO, POL</a>
+                            </td>
+                            <td class="text-center">10</td>
+                            <td class="text-center fw-bold text-primary">3</td>
+                            <td class="text-center">3</td>
+                            <td class="text-center">0.3</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none text-danger fw-bold">
+                                1</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                5</td>
+                            <td
+                                class="text-center extended-stats d-none text-danger fw-bold">
+                                1</td>
+                            <td class="text-center extended-stats d-none">3.3</td>
+                            <td class="text-center extended-stats d-none">0.3</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 50.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">50.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_llaurado-campos-roger.html" class="text-decoration-none text-info">LLAURADO CAMPOS, ROGER</a>
+                            </td>
+                            <td class="text-center">13</td>
+                            <td class="text-center fw-bold text-primary">1</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">0.1</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                2</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">13.0</td>
+                            <td class="text-center extended-stats d-none">0.2</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 54.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">54.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_gilibert-i-casals-ferran.html" class="text-decoration-none text-info">GILIBERT I CASALS, FERRAN</a>
+                            </td>
+                            <td class="text-center">10</td>
+                            <td class="text-center fw-bold text-primary">5</td>
+                            <td class="text-center">3</td>
+                            <td class="text-center">0.5</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                2</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">2.0</td>
+                            <td class="text-center extended-stats d-none">0.3</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 50.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">50.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_el-ouahabi-garcia-jacob.html" class="text-decoration-none text-info">EL OUAHABI GARCIA, JACOB</a>
+                            </td>
+                            <td class="text-center">11</td>
+                            <td class="text-center fw-bold text-primary">0</td>
+                            <td class="text-center">3</td>
+                            <td class="text-center">0.0</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                5</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">11.0</td>
+                            <td class="text-center extended-stats d-none">0.3</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 64.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">64.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_jane-escalza-carlos.html" class="text-decoration-none text-info">JANE ESCALZA, CARLOS</a>
+                            </td>
+                            <td class="text-center">10</td>
+                            <td class="text-center fw-bold text-primary">4</td>
+                            <td class="text-center">4</td>
+                            <td class="text-center">0.4</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                5</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">2.5</td>
+                            <td class="text-center extended-stats d-none">0.4</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 50.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">50.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_salvado-sanz-iván.html" class="text-decoration-none text-info">SALVADO SANZ, IVÁN</a>
+                            </td>
+                            <td class="text-center">11</td>
+                            <td class="text-center fw-bold text-primary">3</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0.3</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                3</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">3.7</td>
+                            <td class="text-center extended-stats d-none">0.0</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 55.00000000000001%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">55.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_sanchez-laya-pau.html" class="text-decoration-none text-info">SANCHEZ LAYA, PAU</a>
+                            </td>
+                            <td class="text-center">8</td>
+                            <td class="text-center fw-bold text-primary">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0.0</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">8.0</td>
+                            <td class="text-center extended-stats d-none">0.0</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 62.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">62.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_gisbert-perez-oriol.html" class="text-decoration-none text-info">GISBERT PEREZ, ORIOL</a>
+                            </td>
+                            <td class="text-center">9</td>
+                            <td class="text-center fw-bold text-primary">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0.0</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                1</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">9.0</td>
+                            <td class="text-center extended-stats d-none">0.0</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 67.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">67.0%</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">
+                                <a href="player_ras-jimenez-blai.html" class="text-decoration-none text-info">RAS JIMENEZ, BLAI</a>
+                            </td>
+                            <td class="text-center">5</td>
+                            <td class="text-center fw-bold text-primary">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0.0</td>
+
+                            <!-- Extended Stats Data -->
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td
+                                class="text-center extended-stats d-none text-warning fw-bold">
+                                2</td>
+                            <td
+                                class="text-center extended-stats d-none ">
+                                0</td>
+                            <td class="text-center extended-stats d-none">5.0</td>
+                            <td class="text-center extended-stats d-none">0.0</td>
+
+                            <td class="text-center">
+                                <div class="progress" style="height: 6px; width: 60px; margin: 0 auto;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 20.0%"></div>
+                                </div>
+                                <small class="text-muted" style="font-size: 0.7em">20.0%</small>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h2 class="fw-bold mb-4 mt-5">Estadístiques de Porters</h2>
+        <div class="glass-card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Porter</th>
+                            <th class="text-center">Minuts</th>
+                            <th class="text-center">Gols en Contra</th>
+                            <th class="text-center">Gols per partit</th>
+                            <th class="text-center">Gols per minut</th>
+                            <th class="text-center">Minuts sense Gol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td class="fw-semibold">SANCHEZ LAYA, PAU</td>
+                            <td class="text-center">220</td>
+                            <td class="text-center fw-bold text-danger">16</td>
+                            <td class="text-center">2.0</td>
+                            <td class="text-center">0.07</td>
+                            <td class="text-center text-success">13.75</td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">GISBERT PEREZ, ORIOL</td>
+                            <td class="text-center">213</td>
+                            <td class="text-center fw-bold text-danger">19</td>
+                            <td class="text-center">2.11</td>
+                            <td class="text-center">0.09</td>
+                            <td class="text-center text-success">11.21</td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="fw-semibold">RAS JIMENEZ, BLAI</td>
+                            <td class="text-center">87</td>
+                            <td class="text-center fw-bold text-danger">14</td>
+                            <td class="text-center">2.8</td>
+                            <td class="text-center">0.16</td>
+                            <td class="text-center text-success">6.21</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleStats() {
+        const hiddenElements = document.querySelectorAll('.extended-stats');
+        const btn = document.getElementById('toggleStatsBtn');
+
+        hiddenElements.forEach(el => {
+            el.classList.toggle('d-none');
+        });
+
+        // Toggle button text and potentially icon
+        if (btn.innerText.includes('Veure tot')) {
+            btn.innerHTML = '<i class="bi bi-dash-circle"></i> Veure menys';
+            btn.classList.add('active');
+        } else {
+            btn.innerHTML = '<i class="bi bi-plus-circle"></i> Veure tot';
+            btn.classList.remove('active');
+        }
+    }
+</script>
+
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">Created by Blai Ras</p>
+            <small>Temporada 25/26</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

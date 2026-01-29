@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ca" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornades - La Masia Stats</title>
+    <link rel="icon" type="image/png" href="assets/crest.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/crest.png" alt="Crest" height="40" class="d-inline-block align-text-top">
+                <span>La Masia Stats</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">Resum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="players.html">Jugadors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                            href="weeks.html">Jornades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                            href="charts.html">Gràfics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        
+<div class="row mb-5">
+    <div class="col-12">
+        <h1 class="fw-bold mb-4">Calendari i Resultats</h1>
+
+        <div class="glass-card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Jornada</th>
+                            <th>Rival</th>
+                            <th>Lloc</th>
+                            <th class="text-center">Resultat</th>
+                            <th class="text-center">Gols Local</th>
+                            <th class="text-center">Gols Visitant</th>
+                            <th>Porter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J1</span></td>
+                            <td class="fw-semibold">Atlètic Les Corts</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">4</td>
+                            <td class="text-center fs-5">6</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J2</span></td>
+                            <td class="fw-semibold">Vinçit</td>
+                            <td>Visitant</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">8</td>
+                            <td class="text-center fs-5">3</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J3</span></td>
+                            <td class="fw-semibold">Comtal</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">2</td>
+                            <td class="text-center fs-5">0</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J4</span></td>
+                            <td class="fw-semibold">Sant Gervasi</td>
+                            <td>Visitant</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">2</td>
+                            <td class="text-center fs-5">5</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J5</span></td>
+                            <td class="fw-semibold">Glòries</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">4</td>
+                            <td class="text-center fs-5">2</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J6</span></td>
+                            <td class="fw-semibold">Can Cuiàs</td>
+                            <td>Visitant</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">9</td>
+                            <td class="text-center fs-5">5</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Blai, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J7</span></td>
+                            <td class="fw-semibold">Mistral</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">6</td>
+                            <td class="text-center fs-5">1</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J8</span></td>
+                            <td class="fw-semibold">Maristes</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">5</td>
+                            <td class="text-center fs-5">3</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J9</span></td>
+                            <td class="fw-semibold">Gràcia</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">3</td>
+                            <td class="text-center fs-5">6</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau, Blai</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J10</span></td>
+                            <td class="fw-semibold">Horta</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">5</td>
+                            <td class="text-center fs-5">6</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Blai, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J11</span></td>
+                            <td class="fw-semibold">Tremedal</td>
+                            <td>Visitant</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-loss">Derrota</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">5</td>
+                            <td class="text-center fs-5">1</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Blai, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J12</span></td>
+                            <td class="fw-semibold">DMS</td>
+                            <td>Local</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">3</td>
+                            <td class="text-center fs-5">1</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Pau, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="badge bg-secondary">J13</span></td>
+                            <td class="fw-semibold">Espanyol</td>
+                            <td>Visitant</td>
+                            <td class="text-center">
+                                
+                                <span class="badge badge-win">Victòria</span>
+                                
+                            </td>
+                            <td class="text-center fs-5">8</td>
+                            <td class="text-center fs-5">9</td>
+                            <td>
+                                <!-- Assuming 'Assistència' column might hold key players present or similar info, or simple placeholder -->
+                                <small class="text-secondary">Blai, Oriol</small>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">Created by Blai Ras</p>
+            <small>Temporada 25/26</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

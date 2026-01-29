@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+
+{% block title %}Resum - La Masia Stats{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-3">Resum de la Temporada</h1>
+        <p class="lead text-secondary">Estadístiques i resultats de l'equip</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Partits Jugats</div>
+            <div class="metric-value">{{ total_matches }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Victòries</div>
+            <div class="metric-value text-success">{{ total_wins }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Gols a Favor</div>
+            <div class="metric-value text-primary">{{ total_goals_for }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 text-center metric-card h-100">
+            <div class="metric-label">Gols en Contra</div>
+            <div class="metric-value text-danger">{{ total_goals_against }}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Leaderboard Section -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="mb-4 fw-bold">Líders de la Temporada</h2>
+    </div>
+    {% for stat in leaderboard %}
+    <div class="col-md-2 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">{{ stat.label }}</div>
+            <div class="fw-bold text-info mb-1" style="font-size: 1.1rem;">
+                <a href="{{ stat.url }}" class="text-decoration-none text-info">{{ stat.name }}</a>
+            </div>
+            <div class="display-6 fw-bold">{{ stat.value }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="glass-card p-4">
+            <h3 class="mb-4">Últims Resultats</h3>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Jornada</th>
+                            <th>Rival</th>
+                            <th class="text-center">Resultat</th>
+                            <th class="text-center">Marcador</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for match in recent_matches %}
+                        <tr>
+                            <td>{{ match['Jornada'] }}</td>
+                            <td>{{ match['vs.'] }}</td>
+                            <td class="text-center">
+                                {% if match['Resultat'] == 'Victòria' %}
+                                <span class="badge badge-win rounded-pill px-3">Victòria</span>
+                                {% elif match['Resultat'] == 'Derrota' %}
+                                <span class="badge badge-loss rounded-pill px-3">Derrota</span>
+                                {% else %}
+                                <span class="badge badge-draw rounded-pill px-3">Empat</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center font-monospace fw-bold">
+                                {{ match['Marcador Local'] }} - {{ match['Marcador Visitant'] }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-3">
+                <a href="weeks.html" class="btn btn-outline-light btn-sm">Veure tots els partits</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
