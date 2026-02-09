@@ -117,8 +117,10 @@
 
 
 
+
+
 <script>
-    const chartData = {"goals_against": [6, 14, 14, 16, 18, 27, 28, 31, 37, 43, 48, 49, 57], "goals_for": [4, 7, 9, 14, 18, 23, 29, 34, 37, 42, 43, 46, 55], "labels": ["Atl\u00e8tic Les Corts", "Vin\u00e7it", "Comtal", "Sant Gervasi", "Gl\u00f2ries", "Can Cui\u00e0s", "Mistral", "Maristes", "Gr\u00e0cia", "Horta", "Tremedal", "DMS", "Espanyol"], "points": [0, 0, 3, 6, 9, 9, 12, 15, 15, 15, 15, 18, 21], "results": ["Derrota", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria", "Vict\u00f2ria", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria", "Derrota", "Derrota", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria"]};
+    const chartData = {"goals_against": [6, 14, 14, 16, 18, 27, 28, 31, 37, 43, 48, 49, 57, 60], "goals_for": [4, 7, 9, 14, 18, 23, 29, 34, 37, 42, 43, 46, 55, 58], "labels": ["Atl\u00e8tic Les Corts", "Vin\u00e7it", "Comtal", "Sant Gervasi", "Gl\u00f2ries", "Can Cui\u00e0s", "Mistral", "Maristes", "Gr\u00e0cia", "Horta", "Tremedal", "DMS", "Espanyol", "Atl\u00e8tic Les Corts"], "points": [0, 0, 3, 6, 9, 9, 12, 15, 15, 15, 15, 18, 21, 22], "results": ["Derrota", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria", "Vict\u00f2ria", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria", "Derrota", "Derrota", "Derrota", "Vict\u00f2ria", "Vict\u00f2ria", "Empat"]};
     const espanyolIndex = -1;
 
     // Setup generic options for dark theme
@@ -151,7 +153,7 @@
     const pointColors = chartData.results.map(result => {
         if (result === 'Victòria') return '#22c55e'; // Green
         if (result === 'Derrota') return '#ef4444'; // Red
-        return '#eab308'; // Yellow (Empat)
+        return '#6c757d'; // Grey (Empat)
     });
 
     new Chart(ctxPoints, {

@@ -13,9 +13,42 @@ ASSETS_DIR = "assets"
 def load_data():
     # Load Players Data
     try:
-        df_players = pl.read_csv(CSV_PLAYERS)
+        df_players = pl.read_csv(CSV_PLAYERS, null_values=["#DIV/0!"])
         # Filter out empty rows if any (based on 'Jugador' column)
         df_players = df_players.filter(pl.col("Jugador").is_not_null())
+        
+        # Cast numeric columns safely to handle potential garbage rows or formatting issues
+        # We assume 'Partits' must be a valid number for a valid player row
+        numeric_cols_int = ["Partits", "Gols", "Assistències", "Grogues", "Vermelles", "Expulsions",
+                            "Normal", "Segon Pal", "Penalti", "D. Penalti", "Tir Lliure (falta)"]
+        for col in numeric_cols_int:
+            if col in df_players.columns:
+                df_players = df_players.with_columns(pl.col(col).cast(pl.Int64, strict=False))
+        
+        # Handle Float columns that might have commas
+        numeric_cols_float = ["Win Rate", "Loss Rate", "Draw Rate", "Gols x partit", 
+                              "Partits per gol", "Assitències x partit", "Grogues_Ratio",
+                              "Minuts sense gols (porter)", "Gols x partit en contra", 
+                              "Gols x minut en contra"]
+        for col in numeric_cols_float:
+            if col in df_players.columns:
+                # Replace , with . if string, then cast
+                df_players = df_players.with_columns(
+                    pl.col(col).cast(pl.String).str.replace(",", ".").cast(pl.Float64, strict=False)
+                )
+
+        # Special handling: "Minuts sense gols (porter)" should be int for logic, but comes as float
+        if "Minuts sense gols (porter)" in df_players.columns:
+             df_players = df_players.with_columns(
+                 pl.col("Minuts sense gols (porter)").fill_null(0).cast(pl.Int64, strict=False)
+             )
+
+        # Filter out rows where 'Partits' is null (implies invalid row or garbage)
+        df_players = df_players.filter(pl.col("Partits").is_not_null())
+        
+        # Also clean up float columns if needed
+        # Win Rate etc are Floats
+        
         print(f"Loaded {len(df_players)} players.")
     except Exception as e:
         print(f"Error loading players CSV: {e}")
@@ -23,7 +56,7 @@ def load_data():
 
     # Load Weeks Data
     try:
-        df_weeks = pl.read_csv(CSV_WEEKS)
+        df_weeks = pl.read_csv(CSV_WEEKS, null_values=["#DIV/0!"])
         # Filter valid weeks (Jornada must exist)
         df_weeks = df_weeks.filter(pl.col("Jornada").is_not_null())
         print(f"Loaded {len(df_weeks)} weeks.")
@@ -179,8 +212,11 @@ def render_pages(df_players, df_weeks, stats):
     
     # Helper to create safe filenames
     import re
+    import unicodedata
     def slugify(text):
         text = str(text).lower().strip()
+        # Normalize unicode to decompose accents (e.g. 'à' -> 'a' + '`') and then remove combining characters
+        text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8')
         text = re.sub(r'[^\w\s-]', '', text)
         text = re.sub(r'[\s_-]+', '-', text)
         return text
@@ -260,7 +296,7 @@ def render_pages(df_players, df_weeks, stats):
         # Using built-in rounding or format
         val = top_wr_row['Win Rate']
         if isinstance(val, (int, float)):
-            val_str = f"{val * 100:.1f}%"
+            val_str = f"{val * 100:.2f}%"
         else:
             val_str = str(val)
             

@@ -95,7 +95,7 @@
             <div class="mb-4">
                 <div class="d-flex justify-content-between mb-1">
                     <span>Win Rate</span>
-                    <span class="text-success">{{ (player['Win Rate']|float * 100)|round(1) }}%</span>
+                    <span class="text-success">{{ (player['Win Rate']|float * 100)|round(2) }}%</span>
                 </div>
                 <div class="progress" style="height: 10px;">
                     <div class="progress-bar bg-success" role="progressbar"
@@ -106,10 +106,10 @@
             <div class="mb-4">
                 <div class="d-flex justify-content-between mb-1">
                     <span>Draw Rate</span>
-                    <span class="text-warning">{{ (player['Draw Rate']|float * 100)|round(1) }}%</span>
+                    <span class="text-secondary">{{ (player['Draw Rate']|float * 100)|round(2) }}%</span>
                 </div>
                 <div class="progress" style="height: 10px;">
-                    <div class="progress-bar bg-warning" role="progressbar"
+                    <div class="progress-bar bg-secondary" role="progressbar"
                         style="width: {{ player['Draw Rate']|float * 100 }}%"></div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             <div class="mb-4">
                 <div class="d-flex justify-content-between mb-1">
                     <span>Loss Rate</span>
-                    <span class="text-danger">{{ (player['Loss Rate']|float * 100)|round(1) }}%</span>
+                    <span class="text-danger">{{ (player['Loss Rate']|float * 100)|round(2) }}%</span>
                 </div>
                 <div class="progress" style="height: 10px;">
                     <div class="progress-bar bg-danger" role="progressbar"
