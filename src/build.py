@@ -325,6 +325,30 @@ def render_pages(df_players, df_weeks, stats):
     if top_red and int(top_red['value']) > 0: # Only show if > 0
         leaderboard.append(top_red)
 
+    # Goal Types Breakdown
+    goal_types_cols = ["Normal", "Segon Pal", "Penalti", "D. Penalti", "Tir Lliure (falta)"]
+    goal_distribution = []
+    
+    total_goals_typed = 0
+    for gt in goal_types_cols:
+        if gt in df_players.columns:
+            total_goals_typed += df_players[gt].fill_null(0).sum()
+            
+    for gt in goal_types_cols:
+        if gt in df_players.columns:
+            count = df_players[gt].fill_null(0).sum()
+            pct = (count / total_goals_typed * 100) if total_goals_typed > 0 else 0
+            
+            display_type = gt
+            if gt == "Tir Lliure (falta)":
+                display_type = "Tir Lliure"
+                
+            goal_distribution.append({
+                "type": display_type,
+                "count": count,
+                "percentage": f"{pct:.1f}%"
+            })
+
     pages = [
         ("index.html", {
             "total_matches": stats["total_matches"],
@@ -332,7 +356,8 @@ def render_pages(df_players, df_weeks, stats):
             "total_goals_for": stats["total_goals_for"],
             "total_goals_against": stats["total_goals_against"],
             "recent_matches": recent_matches,
-            "leaderboard": leaderboard
+            "leaderboard": leaderboard,
+            "goal_distribution": goal_distribution
         }),
         ("players.html", {
             "players": players_data,

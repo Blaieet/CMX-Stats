@@ -38,6 +38,24 @@
     </div>
 </div>
 
+<!-- Tipus de Gols Section -->
+<div class="row mb-5 justify-content-center">
+    <div class="col-12">
+        <h2 class="mb-4 fw-bold">Distribució de Gols</h2>
+    </div>
+    {% for goal_stat in goal_distribution %}
+    <div class="col-md-2 col-sm-4 mb-3">
+        <div class="glass-card p-3 text-center h-100 d-flex flex-column justify-content-center">
+            <div class="small text-secondary mb-2">{{ goal_stat.type }}</div>
+            <div class="fw-bold text-primary mb-1" style="font-size: 1.1rem;">
+                {{ goal_stat.count }}
+            </div>
+            <div class="display-6 fw-bold text-info" style="font-size: 1.5rem;">{{ goal_stat.percentage }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 <!-- Leaderboard Section -->
 <div class="row mb-5">
     <div class="col-12">
