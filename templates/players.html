@@ -22,7 +22,9 @@
                             <th class="text-center">Partits</th>
                             <th class="text-center">Gols</th>
                             <th class="text-center">Assistències</th>
+                            <th class="text-center text-info">G/A</th>
                             <th class="text-center">Gols/Partit</th>
+                            <th class="text-center text-info">G/A / Partit</th>
 
                             <!-- Extended Stats Headers -->
                             <th class="text-center extended-stats d-none">Expulsions</th>
@@ -44,7 +46,9 @@
                             <td class="text-center">{{ player['Partits'] }}</td>
                             <td class="text-center fw-bold text-primary">{{ player['Gols'] }}</td>
                             <td class="text-center">{{ player['Assistències'] }}</td>
+                            <td class="text-center fw-bold text-info">{{ player['G/A'] }}</td>
                             <td class="text-center">{{ player['Gols x partit'] }}</td>
+                            <td class="text-center text-info">{{ "%.2f"|format(player['G/A per game']|float) if player['G/A per game'] else "0.00" }}</td>
 
                             <!-- Extended Stats Data -->
                             <td

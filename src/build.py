@@ -20,7 +20,7 @@ def load_data():
         # Cast numeric columns safely to handle potential garbage rows or formatting issues
         # We assume 'Partits' must be a valid number for a valid player row
         numeric_cols_int = ["Partits", "Gols", "Assistències", "Grogues", "Vermelles", "Expulsions",
-                            "Normal", "Segon Pal", "Penalti", "D. Penalti", "Tir Lliure (falta)"]
+                            "Normal", "Segon Pal", "Penalti", "D. Penalti", "Tir Lliure (falta)", "G/A"]
         for col in numeric_cols_int:
             if col in df_players.columns:
                 df_players = df_players.with_columns(pl.col(col).cast(pl.Int64, strict=False))
@@ -29,7 +29,7 @@ def load_data():
         numeric_cols_float = ["Win Rate", "Loss Rate", "Draw Rate", "Gols x partit", 
                               "Partits per gol", "Assitències x partit", "Grogues_Ratio",
                               "Minuts sense gols (porter)", "Gols x partit en contra", 
-                              "Gols x minut en contra"]
+                              "Gols x minut en contra", "G/A per game"]
         for col in numeric_cols_float:
             if col in df_players.columns:
                 # Replace , with . if string, then cast
@@ -281,6 +281,23 @@ def render_pages(df_players, df_weeks, stats):
     # 4. Max Assistant per Game
     top_assistant_pg = get_top_player(df_players, "Assitències x partit", "Ass. / Partit")
     if top_assistant_pg: leaderboard.append(top_assistant_pg)
+    
+    # 4.1 Max G/A
+    top_ga = get_top_player(df_players, "G/A", "Més G/A")
+    if top_ga: leaderboard.append(top_ga)
+    
+    # 4.2 Max G/A per Game
+    top_ga_pg = get_top_player(df_players, "G/A per game", "G/A / Partit")
+    if top_ga_pg: 
+        # Format the value to 2 decimal places
+        if isinstance(top_ga_pg['value'], str):
+            try:
+                top_ga_pg['value'] = f"{float(top_ga_pg['value']):.2f}"
+            except ValueError:
+                pass
+        else:
+            top_ga_pg['value'] = f"{float(top_ga_pg['value']):.2f}"
+        leaderboard.append(top_ga_pg)
     
     # 5. Best Goalkeeper (Minuts sense gol)
     top_gk = get_top_player(df_players, "Minuts sense gols (porter)", "Millor Porter (Minuts imbatut)", suffix="'")
